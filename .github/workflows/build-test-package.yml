@@ -4,12 +4,12 @@ on: [push,pull_request]
 
 jobs:
   cxx-build-workflow:
-    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-cxx.yml@43b264a115eb9eb3a765ae4d28eccc485f19edd8
+    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-cxx.yml@693abda4746b80fe93b153902f495db8f85abc0b
     with:
       itk-cmake-options: '-DITK_BUILD_DEFAULT_MODULES:BOOL=OFF -DITKGroup_Core:BOOL=ON'
 
   python-build-workflow:
-    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@43b264a115eb9eb3a765ae4d28eccc485f19edd8
+    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@693abda4746b80fe93b153902f495db8f85abc0b
     with:
       itk-python-package-tag: 'a6284292d7fbbc00a63b3551de26800dff0add95'
       itk-python-package-org: 'tbirdso'
