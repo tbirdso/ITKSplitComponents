@@ -1,16 +1,22 @@
 name: Build, test, package
 
-on:
-  push:
-    branches-ignore:
-      - main
-      - master
-  pull_request:
+on: [push, pull_request]
 
 jobs:
   # Removed cxx to preserve resources for python testing
 
-  python-build-workflow:
+  python-build-workflow-dev:
+    if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/main'
+    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@85252b549b1e44aa7198fbea470f75732d092c8b
+    with:
+      python3-minor-versions: '[7]'
+      manylinux-platforms: '["_2_28-x64"]'
+      test-notebooks: true
+    secrets:
+      pypi_password: ${{ secrets.pypi_password }}
+  
+  python-build-workflow-main:
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@85252b549b1e44aa7198fbea470f75732d092c8b
     with:
       python3-minor-versions: '[7]'
