@@ -2,9 +2,9 @@ name: Build, test, package
 
 on:
   push:
-    branches-ignore:
+    branches:
       - main
-  pull_request:
+      - master
 
 jobs:
   # Removed cxx to preserve resources for python testing
@@ -12,7 +12,7 @@ jobs:
   python-build-workflow:
     uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@85252b549b1e44aa7198fbea470f75732d092c8b
     with:
-      python3-minor-versions: '[7]'
+      python3-minor-versions: '["9"]'
       manylinux-platforms: '["_2_28-x64"]'
       test-notebooks: true
     secrets:
