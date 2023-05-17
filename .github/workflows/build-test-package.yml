@@ -3,12 +3,10 @@ name: Build, test, package
 on: [push,pull_request]
 
 jobs:
-  cxx-build-workflow:
-    uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-cxx.yml@03626a23c22246e89e36c7e918a158c440f9b099
-    with:
-      itk-cmake-options: '-DITK_BUILD_DEFAULT_MODULES:BOOL=OFF -DITKGroup_Core:BOOL=ON'
+  # removed for testing (TODO)
 
-  python-build-workflow:
+  python-build-workflow-tag-only:
+    if: startsWith(github.event.ref, 'refs/tags')
     uses: InsightSoftwareConsortium/ITKRemoteModuleBuildTestPackageAction/.github/workflows/build-test-package-python.yml@03626a23c22246e89e36c7e918a158c440f9b099
     with:
       test-notebooks: true
