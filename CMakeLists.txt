@@ -7,6 +7,8 @@ endif()
 
 # set(SplitComponents_LIBRARIES SplitComponents) # header-only module, so no libraries
 
+message(STATUS ">>>>>>>>>> ITKSplitComponents building with CMAKE_CXX_STANDARD ${CMAKE_CXX_STANDARD}")
+
 if(NOT ITK_SOURCE_DIR)
   find_package(ITK REQUIRED)
   list(APPEND CMAKE_MODULE_PATH ${ITK_CMAKE_DIR})

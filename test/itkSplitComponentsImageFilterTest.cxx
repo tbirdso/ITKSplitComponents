@@ -35,6 +35,10 @@ itkSplitComponentsImageFilterTest(int argc, char * argv[])
     return EXIT_FAILURE;
   }
 
+  // FIXME
+  // Test that C++17 compilation is enabled
+  static_assert(std::is_same_v<int, int>());
+
   constexpr unsigned int Dimension = 2;
   using PixelType = signed short;
   using OutputImageType = itk::Image<PixelType, Dimension>;
